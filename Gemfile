@@ -10,6 +10,11 @@ gem 'bootstrap-sass'
 
 gem 'simple_form'
 
+gem 'capybara'
+
+gem 'rspec-rails'
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
