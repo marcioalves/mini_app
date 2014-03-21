@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Myapp" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Teste AutoSeg" %></title>
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="Marcio" content="">
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -24,7 +24,7 @@
         <div class="content">
            <div class="row">
             <div class="span12">
-              <%= render 'layouts/messages' %>
+
               <%= yield %>
             </div>
           </div>
