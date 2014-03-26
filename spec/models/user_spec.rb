@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+	it "has valid" do
+     user = User.new
+     user.name = "Marcio Alves"
+
+     user.should be_valid
+end 
+
 end

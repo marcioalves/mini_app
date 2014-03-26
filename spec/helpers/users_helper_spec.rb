@@ -11,5 +11,6 @@ require 'spec_helper'
 #   end
 # end
 describe UsersHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+t "has valid factory" do
+create(:user).should be_valid
+end end
