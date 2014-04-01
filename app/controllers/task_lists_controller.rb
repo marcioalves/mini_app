@@ -21,6 +21,7 @@ class TaskListsController < ApplicationController
   def edit
   end
 
+
   # POST /task_lists
   # POST /task_lists.json
   def create
@@ -65,6 +66,8 @@ class TaskListsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task_list
       @task_list = TaskList.find(params[:id])
+      @task_list.user_id = current_user.id
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
