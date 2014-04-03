@@ -4,7 +4,7 @@ class TaskListsController < ApplicationController
   # GET /task_lists
   # GET /task_lists.json
   def index
-    @task_lists = TaskList.all
+   @task_lists =  TaskList.where(["user_id = ? or public = ?", current_user.id, true])
   end
 
   # GET /task_lists/1
@@ -14,7 +14,8 @@ class TaskListsController < ApplicationController
 
   # GET /task_lists/new
   def new
-    @task_list = TaskList.new
+  @task_list = TaskList.new
+  @task_list.tasks.build
   end
 
   # GET /task_lists/1/edit
@@ -24,19 +25,20 @@ class TaskListsController < ApplicationController
 
   # POST /task_lists
   # POST /task_lists.json
-  def create
-    @task_list = TaskList.new(task_list_params)
 
-    respond_to do |format|
-      if @task_list.save
-        format.html { redirect_to @task_list, notice: 'Task list was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @task_list }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @task_list.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+def create
+   @task_list = TaskList.new(task_list_params)
+   @task_list.user = current_user
+   respond_to do |format|
+     if @task_list.save
+       format.html { redirect_to @task_list, notice: 'Task list was successfully created.' }
+       format.json { render action: 'show', status: :created, location: @task_list }
+     else
+       format.html { render action: 'new' }
+       format.json { render json: @task_list.errors, status: :unprocessable_entity }
+     end
+   end
+ end
 
   # PATCH/PUT /task_lists/1
   # PATCH/PUT /task_lists/1.json
@@ -66,12 +68,10 @@ class TaskListsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task_list
       @task_list = TaskList.find(params[:id])
-      @task_list.user_id = current_user.id
-
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_list_params
-      params.require(:task_list).permit(:name, :description, :public, :user_id)
+      params.require(:task_list).permit(:name, :description, :public, tasks_attributes:[:task_list_id ,:name,:description])
     end
 end

@@ -2,12 +2,21 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :public %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :public %>
   </div>
 
+</br>
+ Tarefas
+</br>
+
+  <%= f.simple_fields_for :tasks do |t| %>
+  <%= t.input :name %>
+  <%= t.input :description %>
+ <% end %>
+
   <div class="form-actions">
-    <%= f.button :submit %>
+  <%= f.button :submit %>
   </div>
 <% end %>
