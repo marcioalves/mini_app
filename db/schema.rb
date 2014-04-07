@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20140321141500) do
   create_table "tasks", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "taskList_id"
+    t.integer  "task_list_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "tasks", ["taskList_id"], name: "index_tasks_on_taskList_id"
+  add_index "tasks", ["task_list_id"], name: "index_tasks_on_task_list_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
