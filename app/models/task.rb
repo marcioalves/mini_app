@@ -1,3 +1,3 @@
 class Task < ActiveRecord::Base
-  belongs_to :taskList
+  belongs_to :task_list
 end
