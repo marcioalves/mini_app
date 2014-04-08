@@ -1,1 +1,34 @@
-<h1>Home Index</h1>
+<h1>Home</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Public</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @task_lists.each do |task_list| %>
+      <tr>
+        <td><%= task_list.name %></td>
+        <td><%= task_list.description %></td>
+        <td><%= task_list.public %></td>
+        <td><%= task_list.user.name %></td>
+       
+
+
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task list', new_task_list_path %>

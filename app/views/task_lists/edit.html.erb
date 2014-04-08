@@ -1,6 +1,10 @@
 <h1>Editing task_list</h1>
 
-<%= render 'form' %>
+<% if current_user == @task_list.user  -%>
+	<%= render 'form' %>
+ <% else -%>
+	<%= render 'task_list_fields' %>
+<% end -%> 
 
 <%= link_to 'Show', @task_list %> |
 <%= link_to 'Back', task_lists_path %>

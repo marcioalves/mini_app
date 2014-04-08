@@ -72,6 +72,6 @@ def create
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_list_params
-      params.require(:task_list).permit(:name, :description, :public, tasks_attributes:[:task_list_id,:name,:description])
+      params.require(:task_list).permit(:name, :description, :public, :favorite, tasks_attributes:[:id,:task_list_id,:name,:description])
     end
 end
